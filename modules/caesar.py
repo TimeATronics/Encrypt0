@@ -1,10 +1,13 @@
-"""
-Caesar Cipher
-
-    Author of Source Code:
-                Aradhya Chakrabarti
-
-"""
+# -------------------------------------------------------------------------------
+# Name:        caesar
+# Purpose:     Python module containing Caesar Cipher
+#
+# Author:      Aradhya Chakrabarti
+#
+# Created:     17/01/2021
+# Copyright:   (c) Aradhya Chakrabarti 2021
+# Licence:     GNU General Public License v3.0
+# -------------------------------------------------------------------------------
 
 
 def caesarEncrypt(message, key):
