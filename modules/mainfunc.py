@@ -189,7 +189,7 @@ class EnDProcess:
 		""" Function to write encrypted message + "#@" ... to data{{suffix}}.bin """
 
 		suffix = inputSuffix()
-		data_filename = f'data{suffix}'
+		data_filename = f'data{suffix}.bin'
 
 		try:
 			file = open('.\\user\\%s' % data_filename, "wb+")
@@ -219,7 +219,7 @@ class EnDProcess:
 
 		global decrypted
 
-		data_filename = f'data{dsuffix1}'
+		data_filename = f'data{dsuffix1}.bin'
 
 		try:
 			file = open('.\\user\\%s' % data_filename, "rb")
