@@ -1,3 +1,14 @@
+# -------------------------------------------------------------------------------
+# Name:        mainfunc
+# Purpose:     Python module containing all main function definitions
+#
+# Author:      Aradhya Chakrabarti
+#
+# Created:     18/01/2021
+# Copyright:   (c) Aradhya Chakrabarti 2021
+# Licence:     GNU General Public License v3.0
+# -------------------------------------------------------------------------------
+
 from modules.auxfunc import *
 import modules.autokey
 import modules.caesar
@@ -5,11 +16,6 @@ import os
 import sys
 import time
 
-"""
-    Author of Source Code:
-                Aradhya Chakrabarti
-
-"""
 
 width = os.get_terminal_size().columns  # width of terminal (for .center method)
 
