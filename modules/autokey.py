@@ -1,10 +1,13 @@
-"""
-Autokey Cipher
-
-    Author of Source Code:
-                Aradhya Chakrabarti
-
-"""
+# -------------------------------------------------------------------------------
+# Name:        autokey
+# Purpose:     Python module containing Autokey Cipher
+#
+# Author:      Aradhya Chakrabarti
+#
+# Created:     17/01/2021
+# Copyright:   (c) Aradhya Chakrabarti 2021
+# Licence:     GNU General Public License v3.0
+# -------------------------------------------------------------------------------
 
 
 def full_key(autokey_message, key):
