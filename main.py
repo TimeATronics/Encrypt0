@@ -4,9 +4,9 @@
 #
 # Author:      Aradhya Chakrabarti
 #
-# Created:     22/01/2021
+# Created:     18/01/2021
 # Copyright:   (c) Aradhya Chakrabarti 2021
-# Licence:     <your licence>
+# Licence:     GNU General Public License v3.0
 # -------------------------------------------------------------------------------
 
 from modules.mainfunc import *
