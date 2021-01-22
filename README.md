@@ -18,7 +18,7 @@ To know more about the application, refer to the rest of the documentation.
  
 ## INSTALLATION
 
-Encrypt0 was written on a device with Windows architecture. However, provisions have been made to install and use the application on devices running on both Windows and UNIX-based operating systems.
+Encrypt0 can be installed and used on devices running on both Windows and GNU/Linux-based operating systems. This application has been tested on “Windows 7 (32-bit)”, “Windows 10 (64-bit)” and “Raspbian GNU/Linux 10 (buster) (armv7l)” operating systems.
 
 This application does not require explicit installation since it uses a frozen binary executable. System-specific instructions for running Encrypt0 are given below:
 
@@ -26,7 +26,7 @@ This application does not require explicit installation since it uses a frozen b
 
 #### WINDOWS:
 
-•	To run the application, extract the Encrypt0 folder from the  downloaded compressed folder and store it somewhere on the           device’s hard disk. *(You can use the WinRAR utility to extract      the folder.)*
+•	To run the application, extract the "Windows" folder from the downloaded compressed folder and store it somewhere on the device’s hard disk. *(You can use the WinRAR utility to extract the folder.)*
 
 •	Enter the Encrypt0 folder and run “main.exe”. *(This is the executable for Encrypt0)*
 
@@ -35,9 +35,9 @@ This application does not require explicit installation since it uses a frozen b
 •	However, there is a possibility that the .exe file is considered a malware by your antivirus software. *(Encrypt0 is not malware, its source code is available for everyone to see.)* If such a situation arises, please refer to your antivirus software’s manual to create an exception for the file “main.exe”.
 
 
-#### UNIX:
+#### GNU/Linux:
 
-•	To run the application, extract the Encrypt0 folder from the downloaded compressed folder and store it somewhere on the device’s hard disk. *(You can use the “tar” utility to extract the folder.)*
+•	To run the application, extract the "Linux" folder from the downloaded compressed folder and store it somewhere on the device’s hard disk. *(You can use the “unzip” utility to extract the folder.)*
 
 •	Enter the Encrypt0 folder and run “main”. *(This is the executable for Encrypt0)*
 
@@ -50,7 +50,7 @@ This application does not require explicit installation since it uses a frozen b
 
 Encrypt0 provides an easy-to-use Text-based User Interface (TUI). 
 
-#### IMPORTANT: In order to make sure that the applications runs without problems make sure that there is a folder called “user” in the same directory as the file “main.exe” on Windows devices or “main” on UNIX-based devices.
+#### IMPORTANT: In order to make sure that the applications runs without problems make sure that there is a folder called “user” in the same directory as the file “main.exe” on Windows devices or “main” on GNU/Linux-based devices.
 
 When you execute the application, you will see the following loading screen first:
 
@@ -266,6 +266,7 @@ Typing “4” on Main Dashboard will just display the Dashboard again:
 
 1. The source code of the whole application is provided in the “source” folder. 
 2. The Python Library named “PyInstaller” has been used to create the standalone frozen binary executable for Encrypt0.
+3. To build the application yourself, refer to the https://github.com/TimeATronics/Encrypt0/releases/tag/v1.0 section.
 
 <div style='page-break-after: always'></div>
 
