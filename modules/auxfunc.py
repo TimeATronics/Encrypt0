@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------------
 # Name:        auxfunc
-# Purpose:     Python module containing auxiliary functions
+# Purpose:     Python module containing auxiliary function definitions
 #
 # Author:      Aradhya Chakrabarti
 #
