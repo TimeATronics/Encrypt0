@@ -1,3 +1,14 @@
+# -------------------------------------------------------------------------------
+# Name:        auxfunc
+# Purpose:     Python module containing auxiliary functions
+#
+# Author:      Aradhya Chakrabarti
+#
+# Created:     18/01/2021
+# Copyright:   (c) Aradhya Chakrabarti 2021
+# Licence:     GNU General Public License v3.0
+# -------------------------------------------------------------------------------
+
 import subprocess
 import platform
 import pyfiglet
@@ -5,11 +16,6 @@ import time
 import os
 import sys
 
-"""
-    Author of Source Code:
-                Aradhya Chakrabarti
-
-"""
 
 width = os.get_terminal_size().columns
 
