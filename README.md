@@ -204,7 +204,7 @@ So, carefully enter a new suffix for decrypted{{suffix}}.txt.
 Note: The final output file, containing your decrypted message is the file “decrypted{{suffix}}.txt”. For example, if you chose to encrypt a message in a file called “data345.bin” and entered the values “345” and “456” in the two prompts one-by-one during decryption, your decrypted data from “data345.bin” will be stored into “decrypted456.txt”in the “user” directory.
 
 
-For example, if I input “1” and “345” in the two prompts during decryption:
+For example, if I input “1” and “1” in the two prompts during decryption:
 
 ![](images/Fig1-17.png)  
 
@@ -218,7 +218,7 @@ In the “user” directory, you will see:
 *Fig. 1.18 “user” Directory After Encryption & Decryption*
 
 
-The file “decrypted345.txt” contains:
+The file “decrypted1.txt” contains:
 
 ![](images/Fig1-19.png)
 
