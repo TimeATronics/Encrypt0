@@ -121,7 +121,7 @@ output_dict_a = {0: 'A', 1: 'B', 2: 'C', 3: 'D', 4: 'E',
 # -------------------------------------------------------------------------------
 
 parser = argparse.ArgumentParser(
-	prog='encrypt0cli-encrypt.py',
+	prog='encrypt',
 	formatter_class=argparse.RawDescriptionHelpFormatter,
 	epilog=textwrap.dedent('''\
 	Encrypt0 CLI Module for encryption:
