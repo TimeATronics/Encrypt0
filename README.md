@@ -4,7 +4,7 @@
 
 >Author of Source Code & Documentation: **Aradhya Chakrabarti**
 
-#### Refer to Respective READMEs in the *`tui`* & *`cli`* folders.
+#### Refer to Respective READMEs in the `tui`[https://github.com/TimeATronics/Encrypt0/blob/main/tui/README_TUI.md#encrypt0] & `cli`[https://github.com/TimeATronics/Encrypt0/blob/main/cli/README_CLI.md#encrypt0-cli] folders.
 
 ## License
 
