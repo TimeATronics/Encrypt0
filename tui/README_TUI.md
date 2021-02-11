@@ -39,8 +39,6 @@ The final prompt during encryption asks for a suffix for your file containing yo
 
 >*NOTE*: Encrypt0 neglects the whitespaces inside your message and your LEVEL1 key.
 
->*WARNING:* This program does not check if a particular suffix has already been used. Use of the same suffix more than once during encryption will corrupt data in the file with that suffix.
-
 Upon successful encryption of your message, you will see the text `MESSAGE SUCCESSFULLY ENCRYPTED TO FILE` on your screen. You should now find a file with a name of the format `data{{suffix}}.bin` in the `user` folder, where `suffix` is the integer you entered earlier as your file suffix.
 
 >*WARNING:* Don't modify this file, since doing so may lead to corruption of your encrypted data.
@@ -55,11 +53,11 @@ Here, entry of a non integer in any of the two prompts will close the program.
 
 After successful decryption, you will see the text `MESSAGE SUCCESSFULLY DECRYPTED TO FILE` on your screen. You should now find a file with a name of the format `decrypted{{suffix}}.txt` in the `user` folder, where `suffix` is the integer you entered earlier in the *second* prompt.
 
->*WARNING:* This program does not check if a particular suffix has already been used. Use of the same suffix more than once during encryption will corrupt data in the file with that suffix.
 
 ### III. Exit Encrypt0
 
 Press **3** in the Main Dashboard prompt to exit *Encrypt0*.
+
 
 ### IV. Viewing the README:
 
