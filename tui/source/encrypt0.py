@@ -21,11 +21,13 @@ import platform
 import string
 import os
 import sys
+from random import randint
 from time import sleep
 from pyfiglet import figlet_format
 from rich.console import Console
 from rich.table import Table
 from rich.markdown import Markdown
+from rich.progress import track
 
 # Instance of Console class from rich.console
 console = Console()
@@ -123,8 +125,6 @@ def printDir(dir):
 					print('\t\t{}{}\n'.format(subindent, f))
 		else:
 			fileNotFoundErrorMessage()
-	except FileNotFoundError:
-		fileNotFoundErrorMessage()
 	except KeyboardInterrupt:
 		console.print("\n")
 		pass
@@ -137,31 +137,14 @@ def pyfiglet_icon():
 
 def loadingScreen():
 	clearScreen()
-	print("Loading:")
-	animation = ["[■□□□□□□□□□]", "[■■□□□□□□□□]", "[■■■□□□□□□□]", "[■■■■□□□□□□]",
-				 "[■■■■■□□□□□]", "[■■■■■■□□□□]", "[■■■■■■■□□□]",
-				 "[■■■■■■■■□□]", "[■■■■■■■■■□]", "[■■■■■■■■■■]"
-				 ]
-	for i in range(len(animation)):
-		sleep(0.2)
-		sys.stdout.write("\r" + animation[i % len(animation)])
-		sys.stdout.flush()
-	print("\n")
+	for n in track(range(randint(2, 4)), description="Loading..."):
+		sleep(float(str(0.01 + n)))
 	clearScreen()
 
 
 def fileNotFoundErrorMessage():
 	console.print("\tFile and/or directory not found.", style="b red")
-	console.print("\n\tTry again next ", style="b red")
-	console.print("Exiting Now", justify="center", style="b red")
-	sleep(3)
-	clearScreen()
-	sys.exit()
-
-
-def valueErrorMessage():
-	console.print("\tPlease enter an integer value", style="b red")
-	console.print("\n\tTry again next ", style="b red")
+	console.print("\n\tTry again next time.", style="b red")
 	console.print("Exiting Now", justify="center", style="b red")
 	sleep(3)
 	clearScreen()
@@ -236,51 +219,68 @@ def inputKeyC():
 
 def inputSuffix():
 	""" data.bin suffix input during encryption """
-	try:
-		console.print("\n\tEnter an integer suffix for \
+	while True:
+		try:
+			console.print("\n\tEnter an integer suffix for \
 new filename\n\t[bold red]>>> [/bold red]", style="b green", end="")
-		suffix = int(input())
-	except ValueError:
-		valueErrorMessage()
-	except KeyboardInterrupt:
-		console.print("\n")
-		pass
-	else:
-		return suffix
+			suffix = int(input())
+		except ValueError:
+			console.print("\tPlease enter an integer value", style="b red")
+		except KeyboardInterrupt:
+			console.print("\n")
+			pass
+		else:
+			datafile = userfolder + f'data{suffix}.bin'
+			if os.path.isfile(datafile):
+				console.print(f"\tFile {datafile} exists. Try another value", style="b red")
+			else:
+				return suffix
 
 
 def inputDSuffix1():
-	""" decrypted.txt suffix input during decryption """
-	global dsuffix1
-	try:
-		console.print("\n\tEnter desired integer suffix for \
+	""" data.bin suffix input during decryption """
+	while True:
+		try:
+			console.print("\n\tEnter desired integer suffix for \
 data{{suffix}}.bin\n\t[bold red]>>> [/bold red]", style="b green", end="")
-		dsuffix1 = int(input())
-	except ValueError:
-		valueErrorMessage()
-	except KeyboardInterrupt:
-		console.print("\n")
-		pass
+			dsuffix1 = int(input())
+		except ValueError:
+			console.print("\tPlease enter an integer value", style="b red")
+		except KeyboardInterrupt:
+			console.print("\n")
+			pass
+		else:
+			datafile = userfolder + f'data{dsuffix1}.bin'
+			if not os.path.isfile(datafile):
+				console.print(f"\tNo file named {datafile} exists. Try another value", style="b red")
+			else:
+				return dsuffix1
 
 
 def inputDSuffix2():
-	""" data.bin suffix input during decryption """
-	global dsuffix2
-	try:
-		console.print("\n\tEnter an integer suffix for new \
+	""" decrypted.txt suffix input during decryption """
+	while True:
+		try:
+			console.print("\n\tEnter an integer suffix for new \
 file (decrypted{{suffix}}.txt)\n\t[bold red]>>> [/bold red]", style="b green", end="")
-		dsuffix2 = int(input())
-	except ValueError:
-		valueErrorMessage()
-	except KeyboardInterrupt:
-		console.print("\n")
-		pass
+			dsuffix2 = int(input())
+		except ValueError:
+			console.print("\tPlease enter an integer value", style="b red")
+		except KeyboardInterrupt:
+			console.print("\n")
+			pass
+		else:
+			datafile = userfolder + f'decrypted{dsuffix2}.txt'
+			if os.path.isfile(datafile):
+				console.print(f"\tFile {datafile} exists. Try another value", style="b red")
+			else:
+				return dsuffix2
 
 
 def strtobin(string):
 	""" Convert ASCII string to Binary string """
-	binary = ' '.join(format(ord(x), 'b') for x in string)
-	return binary
+	binary = ' '.join(format(ord(x), 'b') for x in string)  # Python int too large to convert
+	return binary 											# into C int error.. if no " ".
 
 
 def bintostr(binary):
@@ -291,7 +291,6 @@ def bintostr(binary):
 
 class EnDProcess:
 	""" All encryption and decryption process definitions """
-	global decrypted
 
 	def __init__(self, message, key_a, key_c):
 		self.message = message
@@ -302,7 +301,7 @@ class EnDProcess:
 		encrypted_c = caesarEncrypt(message, key_c)
 		key_new = full_key(message, key_a)
 		encrypted_a = autokeyEncrypt(encrypted_c, key_new)
-		return encrypted_c, encrypted_a, key_new
+		return encrypted_a, key_new
 
 	def writeEncrypted(self, encrypted_a, key_new, key_c):
 		suffix = inputSuffix()
@@ -322,7 +321,12 @@ class EnDProcess:
 		sleep(2)
 
 	def decrypt(self):
+		global dsuffix2
 		global decrypted
+
+		dsuffix1 = inputDSuffix1()
+		dsuffix2 = inputDSuffix2()
+
 		data_filename = f'data{dsuffix1}.bin'
 		try:
 			file = open(userfolder + data_filename, "rb")
@@ -331,19 +335,23 @@ class EnDProcess:
 		except KeyboardInterrupt:
 			console.print("\n")
 			pass
+
 		data = file.read()
 		data_decode = bintostr(data)
 		file.close()
+
 		list_data = data_decode.split("#@")
 		encrypted_a = list_data[0]
 		key_new = list_data[1]
 		key_c = int(list_data[2])
 		decrypted_c = autokeyDecrypt(encrypted_a, key_new)
 		decrypted = caesarDecrypt(decrypted_c, key_c)
+
 		return decrypted
 
 	def writeDecrypted(self, decrypted):
 		decrypted_filename = f'decrypted{dsuffix2}.txt'
+
 		try:
 			file = open(userfolder + decrypted_filename)
 		except Exception:
@@ -356,9 +364,11 @@ class EnDProcess:
 				pass
 			else:
 				fileNotFoundErrorMessage()
+
 		file = open(userfolder + decrypted_filename, "w")
 		file.write(decrypted)
 		file.close()
+
 		console.print("MESSAGE SUCCESSFULLY DECRYPTED TO FILE", justify="center", style="b magenta")
 		sleep(2)
 
@@ -367,8 +377,7 @@ class EnDProcess:
 
 def startEncryptionProcess():
 	StartEncrypt = EnDProcess(message=inputMessage(), key_a=inputKeyA(), key_c=inputKeyC())
-	StartEncrypt.encrypt()
-	encrypted_c, encrypted_a, key_new = StartEncrypt.encrypt()
+	encrypted_a, key_new = StartEncrypt.encrypt()
 	StartEncrypt.writeEncrypted(encrypted_a, key_new, key_c)
 
 
@@ -398,6 +407,7 @@ def startHelp():
 def startScreenInput():
 	""" Input for main dashboard """
 	global choice
+
 	while True:
 		try:
 			console.print(">>> ", style="b red", end="")
@@ -417,9 +427,6 @@ def startScreenInput():
 
 def startDecryptionProcess():
 	StartDecrypt = EnDProcess(message="", key_a="", key_c="")
-	inputDSuffix1()
-	StartDecrypt.decrypt()
-	inputDSuffix2()
 	StartDecrypt.writeDecrypted(StartDecrypt.decrypt())
 
 
@@ -438,7 +445,6 @@ def tableStart():
 def main():
 	while True:
 		try:
-			clearScreen()
 			sleep(1)
 			loadingScreen()
 			startScreen()
@@ -473,4 +479,8 @@ def main():
 
 
 if __name__ == '__main__':
-	main()
+	try:
+		main()
+	except KeyboardInterrupt:
+		console.print("\n")
+		pass
