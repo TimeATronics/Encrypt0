@@ -26,7 +26,7 @@ To run **Encrypt0-CLI**, on devices running on Windows-based operating systems, 
 ### I. Encryption
 
 ---
-In a command line window, type:
+In a terminal window, type:
 >\>\path\to\encrypt.exe -file \path\to\new\file -text {the message you want to encrypt) -key1 {your LEVEL1 KEY} -key2 {your LEVEL2 KEY}
 >
 >(Usage of {} is to show position of arguments.)
